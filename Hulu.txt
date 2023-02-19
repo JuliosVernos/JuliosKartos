@@ -40,7 +40,7 @@ local Connections = { Active = {} }
 local Signal = {} Signal.__index = Signal
 local GetCharacter, CurrentColorPicker, Spectating
 
-_G.XESPBoxNames = true
+_G.XESPBoxNamesESP = true
 _G.XESPBoxNamesBoxes = true
 
 local QUAD_SUPPORTED_EXPLOIT = pcall(function() Drawing.new('Quad'):Remove() end)
@@ -717,7 +717,7 @@ end
 
 XUpdateESPOptions = nil
 XUpdateESPOptions = RunService.RenderStepped:Connect(function()
-    if _G.XESPBoxNames == true then
+    if _G.XESPBoxNamesNames == true then
         Options.Enabled.Value = true
     else
         Options.Enabled.Value = false
