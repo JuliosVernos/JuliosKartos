@@ -717,7 +717,7 @@ end
 
 XUpdateESPOptions = nil
 XUpdateESPOptions = RunService.RenderStepped:Connect(function()
-    if _G.XESPBoxNamesNames == true then
+    if _G.XESPBoxNamesESP == true then
         Options.Enabled.Value = true
     else
         Options.Enabled.Value = false
